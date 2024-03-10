@@ -6,7 +6,7 @@ import { Spinner } from "./ui/spinner";
 export function ReleasesCard() {
   return (
     <Card>
-      <div className="m-2 p-2 w-min-screen flex flex-col justify-center items-center">
+      <div className="p-2 w-auto h-auto flex flex-col justify-center items-center">
         <Suspense fallback={<Spinner w={"8"} h={"8"} color="zinc" />}>
           <ReleasesTable />
         </Suspense>

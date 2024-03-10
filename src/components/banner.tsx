@@ -8,7 +8,7 @@ export function Banner() {
 
   return (
     <Card>
-      <div className="m-2 p-2 w-full flex flex-col justify-center items-center">
+      <div className="p-2 w-auto h-auto flex flex-col justify-center items-center">
         <strong className="text-6xl">RAIO⚡️DORO</strong>
         <p>The pomodoro App.</p>
 
