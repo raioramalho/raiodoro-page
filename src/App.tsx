@@ -1,13 +1,9 @@
-import './App.css'
-
-function App() {
+export function App() {
 
 
   return (
-    <>
-      <h3>thankyou</h3>
-    </>
+    <main id="main" className="m-4 p-4 w-min-screen flex flex-col justify-center items-center">
+      <h3>Welcome..</h3>
+    </main>
   )
 }
-
-export default App
