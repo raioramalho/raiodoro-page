@@ -2,8 +2,14 @@ import { Suspense } from "react";
 import { ReleasesCard } from "./components/releases-card";
 import { Card } from "./components/ui/card";
 import { Spinner } from "./components/ui/spinner";
+import whiteImage from "./assets/white.png";
+import darkImage from "./assets/dark.png";
+import { useTheme } from "./components/ui-theme/provider";
 
 export function App() {
+
+  const { theme } = useTheme();
+
   return (
     <main
       id="main"
@@ -14,7 +20,14 @@ export function App() {
           <div className="m-2 p-2 w-[500px] flex flex-col justify-center items-center">
             <strong className="text-6xl">RAIO⚡️DORO</strong>
             <p>The pomodoro App.</p>
+
+            {
+              theme === "light" ? <img src={whiteImage}/> : <img src={darkImage}/>
+            }
+
           </div>
+
+          
         </Card>
 
         <Card>

@@ -248,7 +248,7 @@ export function ReleasesCard() {
 
     return (
         <Table>
-          <TableCaption>A list of published releases.</TableCaption>
+          <TableCaption>The published releases</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead className="">Version</TableHead>
@@ -267,7 +267,7 @@ export function ReleasesCard() {
               <TableCell className="">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="justify-center">
-                    <span className="font-medium flex flex-row items-center gap-1">
+                    <span className="font-medium flex flex-row items-center gap-1 text-green-900 dark:text-green-200">
                       <DownloadCloudIcon className="w-4 h-4"/>
                       download
                     </span>
