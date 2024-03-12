@@ -1,19 +1,21 @@
-import { Card } from "./ui/card";
-import { useTheme } from "./ui-theme/provider";
-import whiteImage from "../assets/white.png";
-import darkImage from "../assets/dark.png";
+import { Card, CardContent, CardHeader } from "./ui/card";
+import { Separator } from "./ui/separator";
+import { BannerSlider } from "./banner-slider";
 
 export function Banner() {
-  const { theme } = useTheme();
 
   return (
     <Card>
+      <CardHeader>
       <div className="p-2 w-auto h-auto flex flex-col justify-center items-center">
         <strong className="text-6xl">RAIO⚡️DORO</strong>
         <p>The pomodoro App.</p>
-
-        {theme === "light" ? <img src={whiteImage} /> : <img src={darkImage} />}
       </div>
+      <Separator className="w-auto border"/>
+      </CardHeader>
+      <CardContent className="flex flex-row justify-center">
+        <BannerSlider/>
+      </CardContent>
     </Card>
   );
 }

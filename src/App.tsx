@@ -1,6 +1,6 @@
 import { Banner } from "./components/banner";
 import { ReleasesCard } from "./components/releases-card";
-import { Card } from "./components/ui/card";
+import { ReleaseNotes } from "./components/releases-notes";
 
 export function App() {
   return (
@@ -20,11 +20,7 @@ export function App() {
         id="second-section"
         className="gap-2 flex flex-row flex-wrap justify-center items-top"
       >
-        <Card>
-          <div className="p-2 w-auto h-auto flex flex-col justify-center items-center">
-            <strong>Release notes</strong>
-          </div>
-        </Card>
+        <ReleaseNotes/>
       </div>
     </main>
   );
