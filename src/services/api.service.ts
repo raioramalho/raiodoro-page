@@ -2,6 +2,9 @@
 import axios from "axios";
 import { Releases } from "@/types/release.type";
 
+import { config } from 'dotenv';
+config();
+
 export class ApiService {
   private readonly releasesUrl =
     "https://api.github.com/repos/raioramalho/raiodoro/releases";
