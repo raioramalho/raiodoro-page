@@ -5,7 +5,7 @@ import { Releases } from "@/types/release.type";
 export class ApiService {
   private readonly releasesUrl =
     "https://api.github.com/repos/raioramalho/raiodoro/releases";
-  private readonly token = `${import.meta.env.VITE_TOKEN || import.meta.env.VITE_GITHUB_TOKEN}`;
+  private readonly token = `${import.meta.env.VITE_API_TOKEN}`;
   constructor() {}
 
   async getCurrentRelease(): Promise<string> {
