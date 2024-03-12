@@ -14,22 +14,14 @@ import { DropdownMenu, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { DownloadCloudIcon } from "lucide-react";
 import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
+import { ApiService } from "@/services/api.service";
 
 export function ReleasesTable() {
+  const api = new ApiService();
   const [releases, setReleases] = useState<Releases>([]);
 
   async function getReleases() {
-    let request = await fetch(
-      "https://api.github.com/repos/raioramalho/raiodoro/releases"
-    );
-    let response: Releases = await request.json();
-    if (request.ok) {
-      let publishedReleases = response;
-      setReleases(publishedReleases);
-      return publishedReleases;
-    } else {
-      return;
-    }
+    setReleases(await api.getReleases());
   }
 
   useEffect(() => {

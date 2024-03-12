@@ -9,7 +9,7 @@ export function Spinner(props: SpinnerProps) {
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`w-${props.w} h-${props.h} text-gray-200 animate-spin dark:text-gray-600 fill-${props.color || "blue"}-600`}
+        className={`w-${props.w} h-${props.h} text-gray-200 animate-spin dark:text-${props.color || "gray"}-600 fill-${props.color || "blue"}-300`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
