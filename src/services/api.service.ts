@@ -1,45 +1,44 @@
 /* eslint-disable prefer-const */
-import axios from "axios";
-import { Releases } from "@/types/release.type";
+import { Octokit } from "@octokit/rest";
 
 export class ApiService {
-  private readonly releasesUrl =
-    "https://api.github.com/repos/raioramalho/raiodoro/releases";
-  private readonly token = `${import.meta.env.VITE_API_TOKEN}`;
-  constructor() {}
+  private readonly octokit: Octokit;
 
-  async getCurrentRelease(): Promise<string> {
-    return await axios
-      .get(this.releasesUrl, {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-          "Content-Type": "application/json"
-        },
-      })
-      .then((response) => {
-        let data: Releases = response.data;
-        return data[0].tag_name;
-      })
-      .catch((error) => {
-        return error.response.data;
-      });
+  constructor() {
+    this.octokit = new Octokit({
+      auth: `${import.meta.env.VITE_API_TOKEN}`
+    });
   }
 
-  async getReleases(): Promise<Releases> {
-    return await axios
-      .get(this.releasesUrl, {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-          "Content-Type": "application/json"
-        },
-      })
-      .then((response) => {
-        let data: Releases = response.data;
-        return data;
-      })
-      .catch((error) => {
-        return error.response.data;
+  async getCurrentRelease() {
+    try {
+      const response = await this.octokit.repos.listReleases({
+        owner: "raioramalho",
+        repo: "raiodoro"
       });
+      
+      if (response.data.length > 0) {
+        return response.data[0].tag_name;
+      } else {
+        return "No releases found";
+      }
+    } catch (error) {
+      console.error("Error fetching current release:", error);
+      return "error";
+    }
   }
-  
+
+  async getReleases() {
+    try {
+      const response = await this.octokit.repos.listReleases({
+        owner: "raioramalho",
+        repo: "raiodoro"
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching releases:", error);
+      return [];
+    }
+  }
 }
