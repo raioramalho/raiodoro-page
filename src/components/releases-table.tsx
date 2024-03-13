@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
-import { Releases } from "@/types/release.type";
+import { Asset, Release } from "@/types/release.type";
 import {
   Table,
   TableBody,
@@ -18,10 +19,11 @@ import { ApiService } from "@/services/api.service";
 
 export function ReleasesTable() {
   const api = new ApiService();
-  const [releases, setReleases] = useState<Releases>([]);
+  const [releases, setReleases] = useState<any>();
 
   async function getReleases() {
-    setReleases(await api.getReleases());
+    let data = await api.getReleases();
+    setReleases(data);
   }
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export function ReleasesTable() {
           <TableHead className="">Published</TableHead>
         </TableRow>
       </TableHeader>
-      {releases.map((release) => (
+      {releases.map((release: Release) => (
         <TableBody key={release.id}>
           <TableCell className="font-medium">
             <span className="border p-1 rounded text-green-900 dark:text-green-200">
@@ -60,7 +62,7 @@ export function ReleasesTable() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="flex flex-col gap-1">
                 {/* <Card className="p-2 m-2 flex flex-col justify-center items-center rounded-sm "> */}
-                {release.assets.map((asset) => (
+                {release.assets.map((asset: Asset) => (
                   <Button key={asset.id}>{asset.name}</Button>
                 ))}
                 {/* </Card> */}
