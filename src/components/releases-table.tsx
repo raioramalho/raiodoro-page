@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
-import { Asset, Release } from "@/types/release.type";
+import { Asset } from "@/types/release.type";
 import {
   Table,
   TableBody,
@@ -19,7 +19,7 @@ import { ApiService } from "@/services/api.service";
 
 export function ReleasesTable() {
   const api = new ApiService();
-  const [releases, setReleases] = useState<any>();
+  const [releases, setReleases] = useState<any[]>([]);
 
   async function getReleases() {
     let data = await api.getReleases();
@@ -41,7 +41,7 @@ export function ReleasesTable() {
           <TableHead className="">Published</TableHead>
         </TableRow>
       </TableHeader>
-      {releases.map((release: Release) => (
+      {releases.map((release) => (
         <TableBody key={release.id}>
           <TableCell className="font-medium">
             <span className="border p-1 rounded text-green-900 dark:text-green-200">
