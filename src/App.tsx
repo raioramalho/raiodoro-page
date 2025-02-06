@@ -6,11 +6,11 @@ export function App() {
   return (
     <main
       id="main"
-      className="p-4 w-min-screen h-auto flex flex-col justify-center items-center gap-2"
+      className="p-4 w-full min-h-screen flex flex-col justify-center items-center gap-4 md:gap-6 lg:gap-8"
     >
       <div
         id="first-section"
-        className="gap-2 flex flex-row flex-wrap justify-center items-top"
+        className="w-full gap-4 flex flex-col md:flex-row flex-wrap justify-center items-center md:items-start max-w-[1200px]"
       >
         <Banner />
         <ReleasesCard />
@@ -18,7 +18,7 @@ export function App() {
 
       <div
         id="second-section"
-        className="gap-2 flex flex-row flex-wrap justify-center items-top"
+        className="w-full gap-4 flex flex-col md:flex-row flex-wrap justify-center items-center md:items-start max-w-[1200px]"
       >
         <ReleaseNotes/>
       </div>
